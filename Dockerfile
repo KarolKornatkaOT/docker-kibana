@@ -1,4 +1,4 @@
-FROM oberthur/docker-ubuntu:16.04
+FROM oberthur/docker-ubuntu:16.04-20170303
 
 MAINTAINER Karol Kornatka <k.kornatka@oberthur.com>
 
