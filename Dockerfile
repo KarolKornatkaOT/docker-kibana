@@ -44,8 +44,10 @@ RUN set -x \
 	&& rm -rf /var/lib/apt/lists/* \
 # ensure the default configuration is useful when using --link
 	&& sed -ri "s!^(\#\s*)?(elasticsearch\.url:).*!\2 'http://elasticsearch:9200'!" /opt/kibana/config/kibana.yml \
-	&& grep -q 'elasticsearch:9200' /opt/kibana/config/kibana.yml
-
+	&& grep -q 'elasticsearch:9200' /opt/kibana/config/kibana.yml \
+        && apt-get clean autoclean \
+        && apt-get autoremove --yes \
+        && rm -rf /var/lib/{apt,dpkg,cache,log}/ 
 
 COPY docker-entrypoint.sh /
 
